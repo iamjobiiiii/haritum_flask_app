@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='.assets/css/login.css') }}"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>login</title>
+</head>
+<body>
+
+  <div class="img">    
+<form>
+    <h1>login</h1>
+  <div class="inputbox">
+    <input type="text" placeholder="Username" required>
+    <i class='bx bxs-user' ></i>
+  </div>
+  <div class="inputbox">
+    <input type="password" placeholder="password" required>
+    <i class='bx bxs-lock-alt' ></i>
+  </div>
+  <div class="rem-forgot">
+    <label><input type="checkbox" >Remember me </label>
+
+  </div>
+  <div>
+    <button s type="submit" class="button">Login</button>
+  </div>
+  <div class="reg-link"> <p>don't have an account?</p> <a href="#">Register</a>
+  </div>
+     
+</form>  
+  </div>
+
+</body>
+</html>
