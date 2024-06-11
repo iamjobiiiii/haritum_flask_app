@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('static', filename='./assets/css/login.css') }}"/>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>login</title>
-</head>
-<body>
+{% extends "includes/layouts/fullscreen.html" %}
 
+{% block title %} Sign IN {% endblock %} 
+
+{% block content %}
+
+<main>
+<body>
   <div class="img">    
 <form>
     <h1>login</h1>
@@ -34,4 +31,7 @@
   </div>
 
 </body>
-</html>
+
+</main>
+
+{% endblock content %}
