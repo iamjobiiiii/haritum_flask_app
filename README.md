@@ -14,7 +14,7 @@ $ git clone https://github.com/iamjobiiiii/haritum_flask_app.git
 
 ``` bash
 $ virtualenv env
-$ .\env\Scripts\activate
+$ .venv\Scripts\activate
 $ pip3 install -r requirements.txt
 ```
 
