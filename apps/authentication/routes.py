@@ -1,5 +1,5 @@
 
-from flask import  Flask,render_template
+from flask import  render_template
 from apps.authentication import auth_bp
 
 
