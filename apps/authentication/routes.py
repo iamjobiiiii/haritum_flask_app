@@ -10,3 +10,8 @@ def login():
 @auth_bp.route('/register')
 def register():
     return render_template('/accounts/register.html')
+
+@auth_bp.route('/nav')
+def nav():
+    return render_template('/includes/navigator.html')
+
