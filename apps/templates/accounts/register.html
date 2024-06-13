@@ -1,0 +1,39 @@
+{% extends "includes/layouts/fullscreen.html" %}
+
+{% block title %} Sign IN {% endblock %} 
+
+{% block content %}
+  <main>
+    <body>
+      <div class="img">    
+    <form >
+      
+        <h1>Register</h1>
+      <div class="inputbox">
+        <input type="text" placeholder="Username" required>
+        <i class='bx bxs-user' ></i>
+      </div>
+      <div class="inputbox">
+        <input type="password" placeholder="password" required>
+        <i class='bx bxs-lock-alt' ></i>
+      </div>
+      <div class="inputbox">
+        <input type="email" placeholder="Email" required>
+      </div>
+      <div class="inputbox">
+        <input type="tel" placeholder="Phone number" required>
+      </div>
+      
+      <div>
+        <button  type="submit" class="button_reg">Sign Up</button>
+      </div>
+      
+    
+    </form>  
+      </div>
+    
+    </body>
+    
+    </main>
+     
+    {% endblock content %}
