@@ -1,3 +1,5 @@
+/* for login and reg */
+
 *{
     margin: 0%;
     padding: 0%;
@@ -50,8 +52,18 @@ body{
     font-size: medium;
     position: absolute;
     left: 7px;
+    padding: 0px 5px;
+    transition: 0.3s;
+    pointer-events: none;
+    
 }
 
+.input:focus + .placeholder{
+    top: -10px;
+    color: greenyellow;
+    background-color: #FFFFFF;
+}
+    
 .inputbox i{
     position: absolute;
     right: 20px;
