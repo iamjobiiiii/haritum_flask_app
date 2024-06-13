@@ -1,5 +1,5 @@
 /* for login and reg */
-
+/* start */
 *{
     margin: 0%;
     padding: 0%;
@@ -137,5 +137,36 @@ body{
         
     }
     
-   
-    
+.button_reg{
+
+     align-items: center;
+background: #FFFFFF;
+border: 0 solid #E2E8F0;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+box-sizing: border-box;
+color: #1A202C;
+display: inline-flex;
+font-family: Inter, sans-serif;
+font-size: 1rem;
+font-weight: 700;
+height: 5px;
+justify-content: center;
+line-height: 24px;
+overflow-wrap: break-word;
+padding: 19px;
+text-decoration: none;
+width: auto;
+border-radius: 8px;
+cursor: pointer;
+border-radius: 16px;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+margin-left: 178px;
+margin-top: 25px;
+  
+}
+
+
+/* end */
