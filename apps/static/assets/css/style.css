@@ -177,3 +177,147 @@ margin-top: 25px;
 
 /* start  */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ 
+}
+
+  li,a,button{
+    
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+
+  header{
+    margin-right: 30px;
+    margin-left: 30px;
+    border-radius: 50px;
+    height: 60px;
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+  }
+
+  .logo{
+    position: relative;
+     cursor: pointer;
+     width: 100px;
+     height: 40px;
+     margin-right: auto;
+     
+  }
+
+  .navui{
+    
+      list-style: none;
+    
+  }
+
+  .navui li{
+    cursor: pointer;
+      display: inline-block;
+      padding: 0px 20px;
+  }
+
+.navui li a{
+  
+  transition: all 0.3s ease 0s;
+}
+
+.navui a:hover{
+  color: greenyellow;
+}
+
+.but111{
+ border: none;
+  padding: 9px 25px;
+  background-color: rgb(13, 43, 43);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  
+  
+}
+.but111:hover{
+   background-color: rgb(50, 78, 78);
+}
+
+
+
+/* search button */
+
+
+
+
+.search-box{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.input-search{
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all .5s ease-in-out;
+  background-color: rgb(13, 43, 43);
+  padding-right: 40px;
+  color:#fff;
+}
+.input-search::placeholder{
+  color:rgba(255,255,255,.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  background-color:transparent;
+  pointer-events: painted;  
+}
+.btn-search:focus ~ .input-search{
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255, 255, 255, 0.788);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.input-search:focus{
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255, 255, 255, 0.877);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+
+
+
+
+
+
+
+
+
