@@ -177,7 +177,7 @@ margin-top: 25px;
 
 /* start  */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap'); 
 *{
   margin: 0;
   padding: 0;
@@ -187,7 +187,7 @@ margin-top: 25px;
 
   li,a,button{
     
-    font-family: "Roboto Condensed", sans-serif;
+     font-family: "Roboto Condensed", sans-serif; 
     font-weight: 400;
     font-size: 16px;
     color: rgb(255, 255, 255);
@@ -195,6 +195,24 @@ margin-top: 25px;
   }
 
   header{
+
+    -webkit-animation-name: fadeInLeft;
+  -moz-animation-name: fadeInLeft;
+  -o-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.50s;
+  -moz-animation-duration: 0.50s;
+  -o-animation-duration: 0.50s;
+  animation-duration: 0.50s;
+  -webkit-animation-delay: 0.50s;
+  -moz-animation-delay: 0.50s;
+  -o-animation-duration:0.50s;
+  animation-delay: 0.50s;
+    
     margin-right: 30px;
     margin-left: 30px;
     border-radius: 50px;
@@ -319,5 +337,167 @@ margin-top: 25px;
 
 
 
+
+
+/* index css */
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  display: flex;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-gap: 10px;
+}
+
+.inimg1{ 
+  
+  /* background: url(imagepath); */
+  background-color: rgb(3, 25, 51);
+  height: 100vh;
+  background-position: center;
+  width: 100%;
+}
+
+
+@keyframes fadeInLeft {
+  from {
+      opacity:0;
+      -webkit-transform: translatex(-100px);
+      -moz-transform: translatex(-100px);
+      -o-transform: translatex(-100px);
+      transform: translatex(-100px);
+  }
+  to {
+      opacity:1;
+      -webkit-transform: translatex(0);
+      -moz-transform: translatex(0);
+      -o-transform: translatex(0);
+      transform: translatex(0);
+  }
+}
+.in-left {
+  position: relative;
+  
+  top: 300px;
+  color: rgb(255, 255, 255);
+  font-size: 90px;
+  -webkit-animation-name: fadeInLeft;
+  -moz-animation-name: fadeInLeft;
+  -o-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.50s;
+  -moz-animation-duration: 0.50s;
+  -o-animation-duration: 0.50s;
+  animation-duration: 0.50s;
+  -webkit-animation-delay: 0.50s;
+  -moz-animation-delay: 0.50s;
+  -o-animation-duration:0.50s;
+  animation-delay: 0.50s;
+}
+
+.in-left-p{
+  position: relative;
+  text-shadow: 2px;
+  
+  top: 300px;
+  color: rgb(255, 255, 255);
+  font-size: 45px;
+  -webkit-animation-name: fadeInLeft;
+  -moz-animation-name: fadeInLeft;
+  -o-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.50s;
+  -moz-animation-duration: 0.50s;
+  -o-animation-duration: 0.50s;
+  animation-duration: 0.50s;
+  -webkit-animation-delay: 0.50s;
+  -moz-animation-delay: 0.50s;
+  -o-animation-duration:0.50s;
+  animation-delay: 0.50s;
+}
+
+.inimg2{
+
+  width: 600px;
+   height: 550px;
+   position: relative;
+   left: 1100px;
+   animation: fadeInRight 1s ease-in-out
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+.but45{
+  
+  position: relative;
+  top: -140px;
+  left: 13%;
+  
+  -webkit-animation-name: fadeInLeft;
+  -moz-animation-name: fadeInLeft;
+  -o-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.50s;
+  -moz-animation-duration: 0.50s;
+  -o-animation-duration: 0.50s;
+  animation-duration: 0.50s;
+  -webkit-animation-delay: 0.50s;
+  -moz-animation-delay: 0.50s;
+  -o-animation-duration:0.50s;
+  animation-delay: 0.50s;
+
+margin: 10px;
+padding: 15px 30px;
+text-align: center;
+text-transform: uppercase;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+border-radius: 10px;
+display: block;
+border: 0px;
+font-weight: 700;
+box-shadow: 0px 0px 14px -7px #f09819;
+background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+cursor: pointer;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+}
+
+.but45:hover {
+background-position: right center;
+/* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+.but45:active {
+transform: scale(0.95);
+}
 
 
