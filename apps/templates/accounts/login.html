@@ -6,17 +6,20 @@
 
 <main>
 <body class="bodylog">
+  {% if msg %} 
   <div class="img">    
-<form >
-  
+    <form method="post" action="{{ url_for('login') }}">
+
     <h1>login</h1>
   <div class="inputbox">
-    <input type="text" placeholder="Username" required>
+    <input type="text" placeholder="username" required>
+  
     <i class='bx bxs-user' ></i>
   </div>
   <div class="inputbox">
     <input type="password" placeholder="password" required>
     <i class='bx bxs-lock-alt' ></i>
+ 
   </div>
   <div class="rem-forgot">
     <label><input type="checkbox" >Remember me </label>
@@ -25,7 +28,7 @@
   <div>
     <button  type="submit" class="buttonl">Login</button>
   </div>
-  <div class="reg-link"> <a href="#">Register</a>
+  <div class="reg-link"> <a href="register.html">Register</a>
   </div>
 
 </form>  
