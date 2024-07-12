@@ -1,8 +1,9 @@
-
-from flask import render_template, redirect, request, url_for
+from flask import render_template, redirect, request, url_for,jsonify
 from apps import db
+from apps.authentication.models import User, Admin
 from apps.authentication import auth_bp
-from apps.authentication.models import User
+
+
 
 from flask_login import (
     current_user,
@@ -10,15 +11,12 @@ from flask_login import (
     logout_user
 )
 
-
-
-
 # Login & Registration
 @auth_bp.route('/')
 def route_default():
     return redirect(url_for('auth_bp.login'))
 
-@auth_bp.route('/login' ,methods=['POST'])
+@auth_bp.route('/login' ,methods=['GET','POST'])
 def login():
        if 'login' in request.form:
         username = request.form['username']
@@ -69,4 +67,24 @@ def register():
             return render_template('/accounts/register.html', form=request.form)
 
 
+
+        
+
+@auth_bp.route('/admin', methods=['POST'])
+def admin():
+    if not request.json or not 'username' in request.json or not 'password' in request.json:
+        return jsonify({'message': "No username or password found!"}), 400
+    else:
+        username =  request.json['username']
+        password =  request.json['password']
+        existing_user = Admin.query.filter_by(username=username).first()
+        if existing_user:
+            return jsonify({'message': "Username is already found!"}), 403
+        new_admin = Admin(username=username, password=password)
+        db.session.add(new_admin) 
+        db.session.commit()
+        return jsonify(new_admin.__str__), 201
     
+
+
+
