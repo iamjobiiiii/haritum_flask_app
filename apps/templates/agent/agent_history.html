@@ -1,0 +1,35 @@
+{% extends "/layouts/main_layout.html" %}
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <div class="section" id="tasks">
+            <h2>Tasks</h2>
+            <ul class="task-list">
+                <li class="task-item">
+                    <span>Task 1: Gandinagar</span>
+                    <button onclick="incomplete(this)">incomplete Task</button>
+                </li>
+                <li class="task-item">
+                    <span>Task 2: Ayira</span>
+                    <button onclick="incomplete(this)">incomplete Task</button>
+                </li>
+                <li class="task-item">
+                    <span>Task 3: Parassala</span>
+                    <button onclick="incomplete(this)">incomplete Task</button>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+    <script>
+        function incomplete(button) {
+            button.textContent = "completed";
+            button.style.backgroundColor = "#4CAF50";
+            button.disabled = true;
+        }
+    </script>
+</body>
+
+{% endblock content %}

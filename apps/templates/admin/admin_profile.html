@@ -1,0 +1,46 @@
+{% extends "/layouts/main_layout.html" %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="section" id="profile">
+            <h2>Profile</h2>
+            <div class="profile-picture">
+                <img src="#" alt="Profile Picture" id="currentProfilePicture">
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="profilePicture">Profile Picture</label>
+                    <input type="file" id="profilePicture" name="profilePicture" onchange="previewProfilePicture(event)">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function previewProfilePicture(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('currentProfilePicture');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+
+{% endblock content %}
