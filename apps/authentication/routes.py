@@ -1,7 +1,6 @@
-
-import jsonify
-from flask import render_template, redirect, request, url_for
+from flask import render_template, redirect, request, url_for,jsonify
 from apps import db
+from apps.authentication.models import User, Admin
 from apps.authentication import auth_bp
 from apps.authentication.models import User, Admin,Agent
 
@@ -16,7 +15,7 @@ from flask_login import (
 def route_default():
     return redirect(url_for('auth_bp.login'))
 
-@auth_bp.route('/login' ,methods=['POST'])
+@auth_bp.route('/login' ,methods=['GET','POST'])
 def login():
        if 'login' in request.form:
         username = request.form['username']

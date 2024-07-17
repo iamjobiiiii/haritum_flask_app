@@ -5,6 +5,7 @@ db = SQLAlchemy()
 from apps.authentication.routes import auth_bp
 from apps.home.routes import main_bp
 
+
 def configure_database(app):
     # app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///haritam.db'  # SQLite database file path

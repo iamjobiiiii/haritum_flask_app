@@ -1,6 +1,7 @@
-from apps import db
-from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from werkzeug.security import generate_password_hash, check_password_hash
+from apps import db
+
 
 
 class User(db.Model):
@@ -12,7 +13,7 @@ class User(db.Model):
     password_hash = db.Column(db.String(128), nullable=False)
     salt = db.Column(db.String(32), nullable=False)  # Store a salt for added security
 
-    def __init__(self, username, email, phone_number, password):
+    def _init_(self, username, email, phone_number, password):
         self.username = username
         self.email = email
         self.phone_number = phone_number
@@ -25,7 +26,7 @@ class User(db.Model):
         # Check if the provided password matches the stored hashed password
         return check_password_hash(self.password_hash, password + self.salt)
 
-    def __repr__(self):
+    def _repr_(self):
         return f"User('{self.username}', '{self.email}')"
     
 
