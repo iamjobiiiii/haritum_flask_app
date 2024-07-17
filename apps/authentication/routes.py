@@ -2,8 +2,7 @@ from flask import render_template, redirect, request, url_for,jsonify
 from apps import db
 from apps.authentication.models import User, Admin
 from apps.authentication import auth_bp
-
-
+from apps.authentication.models import User, Admin,Agent
 
 from flask_login import (
     current_user,
@@ -18,7 +17,7 @@ def route_default():
 
 @auth_bp.route('/login' ,methods=['GET','POST'])
 def login():
-       if 'login' in request.form:
+    if request.method == 'POST' and login in request.form:
         username = request.form['username']
         password = request.form['password']
 
@@ -29,15 +28,14 @@ def login():
             return redirect(url_for('auth_bp.route_default'))
 
         # Something (user or pass) is not ok
-        return render_template('/accounts/login.html',
-                               msg='Wrong user or password',
-                               form=request.form)
+        return render_template('/accounts/login.html', msg='Wrong user or password', form=request.form)
 
-       if not current_user.is_authenticated:
-            return render_template('/accounts/login.html',
-                               form=request.form)
-       return redirect(url_for('home_bp.index'))
-        
+    print(current_user.is_authenticated)
+    if not current_user.is_authenticated:
+        return render_template('/accounts/login.html',  form=request.form)
+    return redirect(url_for('main_bp.index'))
+
+#  user register       
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -68,7 +66,7 @@ def register():
 
 
 
-        
+#   admin register     
 
 @auth_bp.route('/admin', methods=['POST'])
 def admin():
@@ -81,10 +79,36 @@ def admin():
         if existing_user:
             return jsonify({'message': "Username is already found!"}), 403
         new_admin = Admin(username=username, password=password)
-        db.session.add(new_admin) 
+        db.session.add(new_admin)
         db.session.commit()
         return jsonify(new_admin.__str__), 201
-    
+
+#  agent register
+@auth_bp.route('/agent', methods=['GET','POST']) 
+def agent_reg():
+    if 'agent' in request.form:
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+        phone_number = request.form['phone_number']
 
 
+        existing_agent = Agent.query.filter_by(username=username).first()     
+       
+        
+        if existing_agent:
+          return render_template('/home/register.html',msg='Username already registered',success=False,
+                                   form=request.form)
+        new_agent = Agent(username=username, email=email, phone_number=phone_number, password=password)
+        db.session.add(new_agent)
+        db.session.commit()
+
+        return render_template('/home/register.html',
+                               msg='New agent created ',
+                               success=True,
+                               form=request.form)
+    else:
+            return render_template('/home/register.html', form=request.form)
+
+        
 

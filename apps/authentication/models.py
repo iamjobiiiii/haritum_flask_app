@@ -3,8 +3,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from apps import db
 
 
+
 class User(db.Model):
-    _tablename_ = 'Users'
+    __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -32,31 +33,36 @@ class User(db.Model):
 
 
 class Admin(db.Model):
-    _tablename_ = 'admin'
+    __tablename__ = 'admin'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
 
 
-    def _init_(self, username,  password):
-           self.username = username
-           self.salt = os.urandom(16).hex() 
-           self.password = generate_password_hash(password + self.salt)
-
-    def check_password(self, password):
-        
-        return check_password_hash(self.password, password + self.salt)
-
-    def _repr_(self):
-        return f"User('{self.username}', '{self.password}')"
-    
+    def check_admin_pass(self, password): 
+        return self.password == password
 
 class Agent(db.Model): 
-       _tablename_ = 'agent'
+       __tablename__ = 'agent'
+       email = db.Column(db.String(120), unique=True, nullable=False)
+       phone_number = db.Column(db.String(20), unique=True, nullable=False)
+       id = db.Column(db.Integer, primary_key=True)
+       username = db.Column(db.String(20), unique=True, nullable=False)
+       password = db.Column(db.String(128), nullable=False)
 
-       agent_id = db.Column(db.Integer, primary_key=True)
-       agent_username = db.Column(db.String(20), unique=True, nullable=False)
-       password_hash = db.Column(db.String(128), nullable=False)
 
-def check_agent_pass(self,password): 
-    return False
+       def __init__(self, username, email, phone_number, password):
+          self.username = username
+          self.email = email
+          self.phone_number = phone_number
+          self.salt = os.urandom(16).hex() 
+
+       
+          self.password = generate_password_hash(password + self.salt)
+
+       def check_password(self, password):
+       
+          return check_password_hash(self.password, password + self.salt)
+
+       def __repr__(self):
+          return f"User('{self.username}', '{self.email}')"
