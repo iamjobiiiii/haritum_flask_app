@@ -17,7 +17,7 @@ def route_default():
 
 @auth_bp.route('/login' ,methods=['GET','POST'])
 def login():
-       if 'login' in request.form:
+    if request.method == 'POST' and login in request.form:
         username = request.form['username']
         password = request.form['password']
 
@@ -28,14 +28,12 @@ def login():
             return redirect(url_for('auth_bp.route_default'))
 
         # Something (user or pass) is not ok
-        return render_template('/accounts/login.html',
-                               msg='Wrong user or password',
-                               form=request.form)
+        return render_template('/accounts/login.html', msg='Wrong user or password', form=request.form)
 
-       if not current_user.is_authenticated:
-            return render_template('/accounts/login.html',
-                               form=request.form)
-       return redirect(url_for('home_bp.index'))
+    print(current_user.is_authenticated)
+    if not current_user.is_authenticated:
+        return render_template('/accounts/login.html',  form=request.form)
+    return redirect(url_for('main_bp.index'))
 
 #  user register       
 
