@@ -1,17 +1,15 @@
 
+import jsonify
 from flask import render_template, redirect, request, url_for
 from apps import db
 from apps.authentication import auth_bp
-from apps.authentication.models import User
+from apps.authentication.models import User, Admin,Agent
 
 from flask_login import (
     current_user,
     login_user,
     logout_user
 )
-
-
-
 
 # Login & Registration
 @auth_bp.route('/')
@@ -39,7 +37,8 @@ def login():
             return render_template('/accounts/login.html',
                                form=request.form)
        return redirect(url_for('home_bp.index'))
-        
+
+#  user register       
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -69,4 +68,50 @@ def register():
             return render_template('/accounts/register.html', form=request.form)
 
 
-    
+
+#   admin register     
+
+@auth_bp.route('/admin', methods=['POST'])
+def admin():
+    if not request.json or not 'username' in request.json or not 'password' in request.json:
+        return jsonify({'message': "No username or password found!"}), 400
+    else:
+        username =  request.json['username']
+        password =  request.json['password']
+        existing_user = Admin.query.filter_by(username=username).first()
+        if existing_user:
+            return jsonify({'message': "Username is already found!"}), 403
+        new_admin = Admin(username=username, password=password)
+        db.session.add(new_admin)
+        db.session.commit()
+        return jsonify(new_admin.__str__), 201
+
+#  agent register
+@auth_bp.route('/agent', methods=['GET','POST']) 
+def agent_reg():
+    if 'agent' in request.form:
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+        phone_number = request.form['phone_number']
+
+
+        existing_agent = Agent.query.filter_by(username=username).first()     
+       
+        
+        if existing_agent:
+          return render_template('/home/register.html',msg='Username already registered',success=False,
+                                   form=request.form)
+        new_agent = Agent(username=username, email=email, phone_number=phone_number, password=password)
+        db.session.add(new_agent)
+        db.session.commit()
+
+        return render_template('/home/register.html',
+                               msg='New agent created ',
+                               success=True,
+                               form=request.form)
+    else:
+            return render_template('/home/register.html', form=request.form)
+
+        
+

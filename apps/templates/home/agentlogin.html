@@ -1,0 +1,38 @@
+{% extends "/layouts/fullscreen.html" %}
+
+{% block title %} Sign IN {% endblock %} 
+
+{% block content %}
+
+<main>
+<body class="bodylog">
+  {% if msg %} 
+  <div class="img">    
+    <form method="post" action="#">
+
+    <h1>login</h1>
+  <div class="inputbox">
+    <input type="text" placeholder="username" required>
+  
+    <i class='bx bxs-user' ></i>
+  </div>
+  <div class="inputbox">
+    <input type="password" placeholder="password" required>
+    <i class='bx bxs-lock-alt' ></i>
+ 
+  </div>
+  <div class="rem-forgot">
+    <label><input type="checkbox" >Remember me </label>
+
+  </div>
+  <div>
+    <button  type="submit" class="buttonl">Login</button>
+  </div>
+</form>  
+  </div>
+
+</body>
+
+</main>
+
+{% endblock content %}
