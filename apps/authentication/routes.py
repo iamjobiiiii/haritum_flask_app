@@ -1,21 +1,17 @@
 from flask import render_template, redirect, request, url_for,jsonify
-from apps import db
-from apps.authentication.models import User, Admin
-from apps.authentication import auth_bp
+from apps import db,login_manager
+from apps.authentication import auth_blueprint
 from apps.authentication.models import User, Admin,Agent
 
-from flask_login import (
-    current_user,
-    login_user,
-    logout_user
-)
+from flask_login import ( login_user, logout_user, current_user)
+
 
 # Login & Registration
-@auth_bp.route('/')
+@auth_blueprint.route('/')
 def route_default():
     return redirect(url_for('auth_bp.login'))
 
-@auth_bp.route('/login' ,methods=['GET','POST'])
+@auth_blueprint.route('/login' ,methods=['GET','POST'])
 def login():
     if request.method == 'POST' and login in request.form:
         username = request.form['username']
@@ -33,11 +29,11 @@ def login():
     print(current_user.is_authenticated)
     if not current_user.is_authenticated:
         return render_template('/accounts/login.html',  form=request.form)
-    return redirect(url_for('main_bp.index'))
+    return redirect(url_for('home_bp.index'))
 
 #  user register       
 
-@auth_bp.route('/register', methods=['GET', 'POST'])
+@auth_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
     if 'register' in request.form:
         username = request.form['username']
@@ -68,7 +64,7 @@ def register():
 
 #   admin register     
 
-@auth_bp.route('/admin', methods=['POST'])
+@auth_blueprint.route('/admin', methods=['POST'])
 def admin():
     if not request.json or not 'username' in request.json or not 'password' in request.json:
         return jsonify({'message': "No username or password found!"}), 400
@@ -84,7 +80,7 @@ def admin():
         return jsonify(new_admin.__str__), 201
 
 #  agent register
-@auth_bp.route('/agent', methods=['GET','POST']) 
+@auth_blueprint.route('/agent', methods=['GET','POST']) 
 def agent_reg():
     if 'agent' in request.form:
         username = request.form['username']

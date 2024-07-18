@@ -1,10 +1,15 @@
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
-from apps import db
+from apps import db,login_manager
+from flask_login import UserMixin
 
 
 
-class User(db.Model):
+
+
+
+
+class User(db.Model,UserMixin):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -32,7 +37,7 @@ class User(db.Model):
 
 
 
-class Admin(db.Model):
+class Admin(db.Model,UserMixin):
     __tablename__ = 'admin'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -42,11 +47,11 @@ class Admin(db.Model):
     def check_admin_pass(self, password): 
         return self.password == password
 
-class Agent(db.Model): 
+class Agent(db.Model,UserMixin): 
        __tablename__ = 'agent'
+       id = db.Column(db.Integer, primary_key=True)
        email = db.Column(db.String(120), unique=True, nullable=False)
        phone_number = db.Column(db.String(20), unique=True, nullable=False)
-       id = db.Column(db.Integer, primary_key=True)
        username = db.Column(db.String(20), unique=True, nullable=False)
        password = db.Column(db.String(128), nullable=False)
 
@@ -66,3 +71,23 @@ class Agent(db.Model):
 
        def __repr__(self):
           return f"User('{self.username}', '{self.email}')"
+
+
+
+
+
+
+
+
+
+
+@login_manager.user_loader
+def user_loader(id):
+    return User.query.filter_by(id=id).first()
+
+
+@login_manager.request_loader
+def request_loader(request):
+    username = request.form.get('username')
+    user = User.query.filter_by(username=username).first()
+    return user if user else None

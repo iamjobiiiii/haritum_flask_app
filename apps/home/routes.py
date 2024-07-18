@@ -1,18 +1,18 @@
-from apps.home import main_bp
+from apps.home import home_blueprint
 from flask_login import login_required
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 
 
-@main_bp.route('/index')
+@home_blueprint.route('/index')
 @login_required
 def index():
 
     return render_template('home/index.html', segment='index')
 
 
-@main_bp.route('/<template>')
+@home_blueprint.route('/<template>')
 @login_required
 def route_template(template):
 
