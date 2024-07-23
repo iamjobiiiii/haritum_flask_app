@@ -16,12 +16,12 @@
         </ul>
         
     </nav>
-    {%if user == user %}
+    {%if current_user.is_authenticated %}
 
       <div><a  href="#"><button class="but111">Profile</button></a>
       </div>
   {%else%}
       <div><a  href="{{url_for('auth_bp.login')}}"><button class="but111">login</button></a>
       </div>
-  
+  {%endif%}
   </header>
