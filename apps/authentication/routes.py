@@ -1,9 +1,10 @@
 
 from flask import  render_template, redirect, url_for,request
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user,login_required
 from forms import LoginForm, RegistrationForm
 from models import User, db
 from .import auth_blueprint
+
 
 from flask_login import (
     current_user,
@@ -13,7 +14,7 @@ from flask_login import (
 
 @auth_blueprint.route('/')
 def route_default():
-    return redirect(url_for('auth_bp.login'))
+    return redirect(url_for('home_bp.index'))
 
 
 # Login & Registration
@@ -22,6 +23,7 @@ def route_default():
 def login():
     login_form = LoginForm(request.form)
     if 'login' in request.form:
+       
 
         # read form data
         username = request.form['username']
@@ -37,12 +39,12 @@ def login():
 
 
         # Something (user or pass) is not ok
-        return render_template('accounts/login.html',
+        return render_template('accounts\login.html',
                                msg='Wrong user or password',
                                form=login_form)
 
     if not current_user.is_authenticated:
-        return render_template('accounts/login.html',
+        return render_template('accounts\login.html',
                                form=login_form)
     return redirect(url_for('auth_bp.index'))
 
